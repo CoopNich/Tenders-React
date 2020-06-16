@@ -1,5 +1,7 @@
 import React from "react";
 import { Route } from 'react-router-dom';
+import Login from "./auth/Login"
+import Register from "./auth/Register"
 
 
 const ApplicationViews = (props) => {
@@ -22,10 +24,10 @@ const ApplicationViews = (props) => {
             return <p>My Profile</p>
         }}/>
         <Route path="/login" render={props => {
-            return <p>Log In Form</p>
+            return <Login {...props}/>
         }}/>
         <Route path="/register" render={props => {
-            return <p>Register Form</p>
+            return <Register {...props}/>
         }}/>
         </>
     )
