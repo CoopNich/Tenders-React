@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import SearchManager from "../../modules/SearchManager";
+import CocktailManager from "../../modules/CocktailManager"
+import IngredientManager from "../../modules/IngredientsManager"
+
 
 const SearchedCocktailDetail = (props) => {
     const [cocktail, setCocktail] = useState({})
@@ -12,14 +15,32 @@ const SearchedCocktailDetail = (props) => {
         })
     };
 
+    const godHelpUsAll = () => {
+
+        const newCocktailInstance = {
+            name: cocktail.strDrink,
+            external_id: cocktail.idDrink,
+            glass: cocktail.strGlass,
+            instructions: cocktail.strInstructions,
+            is_edited: false,
+            is_new: false,
+            image_url: cocktail.strDrinkThumb
+        }
+        CocktailManager.addExternalCocktail(newCocktailInstance).then(() =>
+        props.history.push("/ "))
+        }
+
     useEffect(() => {
       getCocktail()
     }, [])
 
     return (
+        <>
       <div className="pageContent">
           <h3>{cocktail.strDrink}</h3>
       </div>
+      <button type="button" onClick={godHelpUsAll}>Save Cocktail</button>
+      </>
     );
   };
   
