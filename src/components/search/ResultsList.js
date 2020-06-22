@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SearchManager from '../../modules/SearchManager';
+import ResultsCard from './ResultsCard'
 
 const SearchResults = (props) => {
   const [results, setResults] = useState([]);
@@ -26,6 +27,9 @@ const SearchResults = (props) => {
       <p>Generating Search Results...</p>
     </div>
    : <>
+                <div className="search_results">{results.drinks.map((cocktail) => (
+              <ResultsCard key={cocktail.idDrink} cocktail={cocktail} {...props} />
+            ))}</div>
     </>
     )
 }
