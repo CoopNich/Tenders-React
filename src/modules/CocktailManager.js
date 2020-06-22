@@ -11,9 +11,9 @@ const CocktailManager = {
                 "Authorization": `Token ${sessionStorage.getItem("auth-token")}`
             },
             "body": JSON.stringify(cocktail)
-        })
+        }).then((result) => result.json());
     }
-    
+
 }
 
 export default CocktailManager;

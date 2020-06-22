@@ -10,12 +10,14 @@ const SearchedCocktailDetail = (props) => {
     const getCocktail = () => {
       SearchManager.getSingleCocktail(props.cocktailId)
         .then(response => {
-          setCocktail(response.drinks[0]);
+          setCocktail(response.drinks[0])
           console.log(response.drinks[0])
         })
     };
 
     const godHelpUsAll = () => {
+
+        let i;
 
         const newCocktailInstance = {
             name: cocktail.strDrink,
@@ -26,8 +28,20 @@ const SearchedCocktailDetail = (props) => {
             is_new: false,
             image_url: cocktail.strDrinkThumb
         }
-        CocktailManager.addExternalCocktail(newCocktailInstance).then(() =>
-        props.history.push("/ "))
+        CocktailManager.addExternalCocktail(newCocktailInstance).then(response =>
+                {for (i = 1; i < 16; i++) {
+              const ingredient = cocktail[`strIngredient${i}`]
+              const measurement = cocktail[`strMeasure${i}`]
+              if (ingredient != null) {
+                const newIngredientObj = {
+                  "ingredient": ingredient,
+                  "measurement": measurement,
+                  "cocktail_id": response.id
+                }
+                IngredientManager.addExternalIngredient(newIngredientObj)
+              }
+            }
+        }).then(props.history.push('/ '))
         }
 
     useEffect(() => {
