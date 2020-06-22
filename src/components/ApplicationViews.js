@@ -2,6 +2,7 @@ import React from "react";
 import { Route } from 'react-router-dom';
 import Login from "./auth/Login"
 import Register from "./auth/Register"
+import SearchResults from "./search/ResultsList"
 
 
 const ApplicationViews = (props) => {
@@ -17,8 +18,8 @@ const ApplicationViews = (props) => {
         <Route path="/addcocktail" render={props => {
             return <p>Cocktail Form</p>
         }}/>
-        <Route path="/search" render={props => {
-            return <p>Cocktail Search Results</p>
+        <Route path="/results" render={props => {
+            return <SearchResults {...props}/>
         }}/>
         <Route path="/profile" render={props => {
             return <p>My Profile</p>
