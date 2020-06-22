@@ -2,6 +2,7 @@ import React from 'react';
 import './Tenders.css';
 import ApplicationViews from './components/ApplicationViews';
 import NavBar from './components/nav/Nav';
+import SearchBar from './components/search/SearchBar'
 import { BrowserRouter as Router } from 'react-router-dom';
 
 
@@ -10,6 +11,7 @@ function Tenders() {
     <>
       <Router>
         <NavBar />
+        <SearchBar />
         <ApplicationViews />
       </Router>
     </>
