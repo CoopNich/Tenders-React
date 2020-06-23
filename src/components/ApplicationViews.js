@@ -2,6 +2,7 @@ import React from "react";
 import { Route } from 'react-router-dom';
 import Login from "./auth/Login"
 import Register from "./auth/Register"
+import CocktailList from "./cocktails/CocktailList"
 import SearchResults from "./search/ResultsList"
 import SearchedCocktailDetail from "./search/SearchedCocktailDetail"
 
@@ -14,7 +15,7 @@ const ApplicationViews = (props) => {
                 return <p>Home Page</p>
             }} />
             <Route path="/mycocktails" render={props => {
-                return <p>My Cocktails</p>
+                return <CocktailList {...props} />
             }} />
             <Route path="/addcocktail" render={props => {
                 return <p>Cocktail Form</p>
@@ -35,12 +36,9 @@ const ApplicationViews = (props) => {
                 path="/cocktails/:cocktailId(\d+)"
                 render={(props) => {
                     return (
-                        <SearchedCocktailDetail
-                            cocktailId={parseInt(props.match.params.cocktailId)}
-                            {...props}
-                        />
-                    );
-                }}
+                    <SearchedCocktailDetail
+                     cocktailId={parseInt(props.match.params.cocktailId)}
+                    {...props}/> )}}
             />
         </>
     )

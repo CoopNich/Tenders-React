@@ -8,11 +8,11 @@ const SearchedCocktailDetail = (props) => {
     const [cocktail, setCocktail] = useState({})
 
     const getCocktail = () => {
-      SearchManager.getSingleCocktail(props.cocktailId)
-        .then(response => {
-          setCocktail(response.drinks[0])
-          console.log(response.drinks[0])
-        })
+        SearchManager.getSingleCocktail(props.cocktailId)
+            .then(response => {
+                setCocktail(response.drinks[0])
+                console.log(response.drinks[0])
+            })
     };
 
     const godHelpUsAll = () => {
@@ -28,34 +28,34 @@ const SearchedCocktailDetail = (props) => {
             is_new: false,
             image_url: cocktail.strDrinkThumb
         }
-        CocktailManager.addExternalCocktail(newCocktailInstance).then(response =>
-                {for (i = 1; i < 16; i++) {
-              const ingredient = cocktail[`strIngredient${i}`]
-              const measurement = cocktail[`strMeasure${i}`]
-              if (ingredient != null) {
-                const newIngredientObj = {
-                  "ingredient": ingredient,
-                  "measurement": measurement,
-                  "cocktail_id": response.id
+        CocktailManager.addExternalCocktail(newCocktailInstance).then(response => {
+            for (i = 1; i < 16; i++) {
+                const ingredient = cocktail[`strIngredient${i}`]
+                const measurement = cocktail[`strMeasure${i}`]
+                if (ingredient != null) {
+                    const newIngredientObj = {
+                        "ingredient": ingredient,
+                        "measurement": measurement,
+                        "cocktail_id": response.id
+                    }
+                    IngredientManager.addExternalIngredient(newIngredientObj)
                 }
-                IngredientManager.addExternalIngredient(newIngredientObj)
-              }
             }
         }).then(props.history.push('/ '))
-        }
+    }
 
     useEffect(() => {
-      getCocktail()
+        getCocktail()
     }, [])
 
     return (
         <>
-      <div className="pageContent">
-          <h3>{cocktail.strDrink}</h3>
-      </div>
-      <button type="button" onClick={godHelpUsAll}>Save Cocktail</button>
-      </>
+            <div className="pageContent">
+                <h3>{cocktail.strDrink}</h3>
+            </div>
+            <button type="button" onClick={godHelpUsAll}>Save Cocktail</button>
+        </>
     );
-  };
-  
-  export default SearchedCocktailDetail;
+};
+
+export default SearchedCocktailDetail;
