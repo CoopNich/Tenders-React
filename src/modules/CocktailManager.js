@@ -12,7 +12,18 @@ const CocktailManager = {
             },
             "body": JSON.stringify(cocktail)
         }).then((result) => result.json());
-    }
+    },
+    getCocktailsByUser() {
+        return fetch(`${cocktailsUrl}?user`, {
+            "method": "GET",
+            "headers": {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": `Token ${sessionStorage.getItem("auth-token")}`
+            }
+        })
+        .then(response => response.json())
+      }
 
 }
 
