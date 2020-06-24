@@ -26,10 +26,12 @@ const SearchResults = (props) => {
     <div className="content">
       <p>Generating Search Results...</p>
     </div>
-   : <>
-                <div className="search_results">{results.drinks.map((cocktail) => (
+   : <>  {results.drinks !== null
+               ? <div className="search_results">{results.drinks.map((cocktail) => (
               <ResultsCard key={cocktail.idDrink} cocktail={cocktail} {...props} />
             ))}</div>
+            : <div>No results found</div>
+               }
     </>
     )
 }

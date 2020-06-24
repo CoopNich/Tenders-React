@@ -49,10 +49,9 @@ const CocktailDetail = (props) => {
             });
     };
 
-
     useEffect(() => {
-        getCocktail();
-        getIngredients();
+        getCocktail()
+        getIngredients()
     }, []);
 
     return (
