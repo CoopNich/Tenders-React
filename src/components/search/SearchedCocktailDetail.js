@@ -46,7 +46,7 @@ const SearchedCocktailDetail = (props) => {
 
     useEffect(() => {
         getCocktail()
-    }, [])
+    })
 
     return (
         <>
