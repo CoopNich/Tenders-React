@@ -46,6 +46,15 @@ const CocktailManager = {
             name: editedInfo.name
           }),
         });
+      },
+      deleteCocktail(id) {
+        return fetch(`${cocktailsUrl}/${id}`, {
+            "method": "DELETE",
+            "headers": {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${sessionStorage.getItem("auth-token")}`
+            }
+        })
       }
 
 }

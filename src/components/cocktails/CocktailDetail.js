@@ -49,17 +49,16 @@ const CocktailDetail = (props) => {
             });
     };
 
-
     useEffect(() => {
-        getCocktail();
-        getIngredients();
+        getCocktail()
+        getIngredients()
     }, []);
 
     return (
         <>
             <div className="content">
                 <div>
-                    <img src={cocktail.image_url}></img>
+                    <img src={cocktail.image_url} required></img>
                     {isEditing1
                         ? <form onSubmit={updateCocktail}>
                             <input

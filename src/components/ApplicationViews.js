@@ -4,6 +4,7 @@ import Login from "./auth/Login"
 import Register from "./auth/Register"
 import CocktailList from "./cocktails/CocktailList"
 import CocktailDetail from "./cocktails/CocktailDetail"
+import CocktailForm from "./cocktails/CocktailForm"
 import SearchResults from "./search/ResultsList"
 import SearchedCocktailDetail from "./search/SearchedCocktailDetail"
 
@@ -27,7 +28,7 @@ const ApplicationViews = (props) => {
                     {...props}/> )}}
             />
             <Route path="/addcocktail" render={props => {
-                return <p>Cocktail Form</p>
+                return <CocktailForm {...props} />
             }} />
             <Route path="/results" render={props => {
                 return <SearchResults {...props} />

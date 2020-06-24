@@ -15,6 +15,13 @@ const CocktailList = (props) => {
             });
     };
 
+    const deleteCocktail = (cocktailId) => {
+        if (window.confirm("Are you sure you want to delete this?")) {
+            CocktailManager.deleteCocktail(cocktailId)
+                .then(generateResults)
+        }
+    }
+
     useEffect(() => {
         generateResults();
     }, []);
@@ -26,6 +33,8 @@ const CocktailList = (props) => {
                     <CocktailCard
                         key={cocktail.id}
                         cocktail={cocktail}
+                        deleteCocktail={deleteCocktail}
+
                         {...props}
                     />)}
             </div>
