@@ -17,8 +17,6 @@ const SearchedCocktailDetail = (props) => {
 
     const godHelpUsAll = () => {
 
-        let i;
-
         const newCocktailInstance = {
             name: cocktail.strDrink,
             external_id: cocktail.idDrink,
@@ -29,7 +27,7 @@ const SearchedCocktailDetail = (props) => {
             image_url: cocktail.strDrinkThumb
         }
         CocktailManager.addExternalCocktail(newCocktailInstance).then(response => {
-            for (i = 1; i < 16; i++) {
+            for (let i = 1; i < 16; i++) {
                 const ingredient = cocktail[`strIngredient${i}`]
                 const measurement = cocktail[`strMeasure${i}`]
                 if (ingredient != null) {
