@@ -2,7 +2,7 @@ import { useState } from "react";
 import AuthManager from "../../modules/AuthManager";
 
 
-const useSimpleAuth = () => {
+const useSimpleAuth = (props) => {
 
     const [loggedIn, setIsLoggedIn] = useState(false)
 

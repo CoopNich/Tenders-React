@@ -23,7 +23,7 @@ const Register = props => {
     }
 
     register(newUser)
-    .then(() => props.history.push("/ "))
+    .then(() => props.history.push("/"))
   }
 
   return (

@@ -10,10 +10,11 @@ const NavBar = (props) => {
 
     return (
         <>
-            <nav>
+            
         {
         isAuthenticated()
-            ? <><Link to='/ '>
+            ? <><nav>
+                <Link to='/'>
                     Home
             </Link>
                 <Link to='/mycocktails'>
@@ -25,17 +26,13 @@ const NavBar = (props) => {
                 <Link to='/profile'>
                     My Profile
             </Link>
-                <Link onClick={() => { logout() }} to='/ '>
+                <Link onClick={() => { logout() }} to='/login'>
                     Log Out
-            </Link></>
-            : <> <Link to='/login'>
-                    Log In
             </Link>
-                <Link to='/register'>
-                    Register
-            </Link></>
+            </nav></>
+            : null
         }
-            </nav>
+            
         </>
     )
 };
