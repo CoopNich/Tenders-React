@@ -39,7 +39,7 @@ const SearchedCocktailDetail = (props) => {
                     IngredientManager.addExternalIngredient(newIngredientObj)
                 }
             }
-        }).then(props.history.push('/ '))
+        }).then(props.history.push('/mycocktails'))
     }
 
     useEffect(() => {

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { withRouter } from 'react-router-dom'
+import useSimpleAuth from "../auth/useSimpleAuth"
 
 
       const SearchBar = (props) => {
 
-        // const { isAuthenticated } = useSimpleAuth()
+        const { isAuthenticated } = useSimpleAuth()
         const [search, setSearch] = useState({ searchBar: "" });
 
         const handleFieldChange = (evt) => {
@@ -24,8 +25,9 @@ import { withRouter } from 'react-router-dom'
     
     
         return (
-            <>
-          <div className="searchBarDiv">
+        isAuthenticated()
+            
+         ? <div className="searchBarDiv">
             <form onSubmit={handleSearch}>
               <input
                 onChange={handleFieldChange}
@@ -35,7 +37,7 @@ import { withRouter } from 'react-router-dom'
               />
             </form>
           </div>
-            </>
+            :null 
         )
     };
     

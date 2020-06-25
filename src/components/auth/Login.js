@@ -20,7 +20,7 @@ const Login = props => {
     }
 
     login(userCreds)
-      .then(() => props.history.push("/ "))
+      .then(() => props.history.push("/mycocktails"))
   }
 
   return (
