@@ -48,10 +48,11 @@ const SearchedCocktailDetail = (props) => {
 
     return (
         <>
-            <div className="pageContent">
+            <div className="content">
                 <h3>{cocktail.strDrink}</h3>
+                <button type="button" onClick={godHelpUsAll}>Save Cocktail</button>
             </div>
-            <button type="button" onClick={godHelpUsAll}>Save Cocktail</button>
+            
         </>
     );
 };

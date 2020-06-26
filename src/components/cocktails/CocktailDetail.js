@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import CocktailManager from '../../modules/CocktailManager';
 import IngredientManager from "../../modules/IngredientsManager"
 import IngredientCard from "./IngredientCard"
-import "./CocktailDetail.css"
 
 const CocktailDetail = (props) => {
     const [cocktail, setCocktail] = useState({});
@@ -57,41 +56,47 @@ const CocktailDetail = (props) => {
     return (
         <>
             <div className="content">
+                <div className="detail-flex">
+                    <div className="detail-name">
+
+                        <img className="detail-image" src={cocktail.image_url} required></img>
+                        {isEditing1
+                            ? <form onSubmit={updateCocktail}>
+                                <input
+                                    type="text"
+                                    required
+                                    onChange={handleFieldChange}
+                                    id="name"
+                                    value={cocktail.name}
+                                />
+                            </form>
+                            : <h2 onClick={() => { toggleEdit1(); }}>{cocktail.name}</h2>
+                        }
+                    </div>
+                    <div className="detail-ingredients">
+                        <div>
+                            {ingredients.map((ingredient) => (
+                                <IngredientCard key={ingredient.id} ingredient={ingredient} getIngredients={getIngredients} {...props} />))}
+                        </div>
+
+                    </div>
+                </div>
                 <div>
-                    <img src={cocktail.image_url} required></img>
-                    {isEditing1
-                        ? <form onSubmit={updateCocktail}>
-                            <input
-                                type="text"
+                    {isEditing2
+
+                        ? <><form onSubmit={updateCocktail}>
+                            <textarea rows="5" cols="40"
+                                type="textarea"
                                 required
                                 onChange={handleFieldChange}
-                                id="name"
-                                value={cocktail.name}
+                                id="instructions"
+                                value={cocktail.instructions}
                             />
                         </form>
-                        : <p onClick={() => { toggleEdit1(); }}>{cocktail.name}</p>
+                            <button type="button" onClick={() => { toggleEdit2(); }}>Update</button></>
+                        : <span onClick={() => { toggleEdit2(); }}>{cocktail.instructions}</span>
                     }
                 </div>
-            </div>
-            <div>
-                {ingredients.map((ingredient) => (
-                    <IngredientCard key={ingredient.id} ingredient={ingredient} getIngredients={getIngredients} {...props} />))}
-            </div>
-            <div>
-                {isEditing2
-                    
-                    ? <><form onSubmit={updateCocktail}>
-                        <textarea rows="5" cols="40"
-                            type="textarea"
-                            required
-                            onChange={handleFieldChange}
-                            id="instructions"
-                            value={cocktail.instructions}
-                        />
-                    </form>
-                    <button type="button" onClick={() => { toggleEdit2(); }}>Update</button></>
-                    : <span onClick={() => { toggleEdit2(); }}>{cocktail.instructions}</span>
-                }
             </div>
         </>
 

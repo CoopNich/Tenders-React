@@ -1,11 +1,10 @@
 import React from "react";
-import "./CocktailCard.css"
 
 const CocktailCard = (props) => {
     return (
         <div className="product-card">
-            <img src={props.cocktail.image_url} onClick={() => { props.history.push(`/mycocktails/${props.cocktail.id}`)}}></img>
-            <p>{props.cocktail.name}</p>
+            <img className="card-image" src={props.cocktail.image_url} onClick={() => { props.history.push(`/mycocktails/${props.cocktail.id}`)}}></img>
+            <div className="card-name">{props.cocktail.name}</div>
             <button onClick={() => props.deleteCocktail(props.cocktail.id)}>Delete</button>
         </div>
     )
