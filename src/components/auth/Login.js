@@ -24,7 +24,7 @@ const Login = props => {
   }
 
   return (
-    <form className="form--login" onSubmit={handleLogin}>
+    <form className="content" onSubmit={handleLogin}>
       <h1 className="h3 mb-3 font-weight-normal">Login</h1>
       <fieldset>
         <label htmlFor="username"> Username </label>

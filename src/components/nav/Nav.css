@@ -1,5 +1,29 @@
+#navDiv {
+    position: fixed;
+    margin: 30px;
+    background-color: #CED4DA;
+    width: 300px;
+    border-radius: 10px;
+    height: 83%;
+}
+
 nav {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: space-evenly;
-} 
+    height: 80%;
+}
+
+nav a {
+    text-decoration: none;
+    color: #F8F9FA;
+    padding: 10px 20px 10px 20px;
+    background-color: #495057;
+    border-radius: 10px;
+}
+
+nav a:hover {
+    color: #495057;
+    background-color: #F8F9FA;
+}

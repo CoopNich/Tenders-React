@@ -24,12 +24,12 @@ const CocktailList = (props) => {
 
     useEffect(() => {
         generateResults();
-    }, []);
+    }, [results]);
 
     return (
         <div className="content">
-            <div>
-                {results.map(cocktail =>
+            <div className="card-content">
+                {results.slice(0).reverse().map(cocktail =>
                     <CocktailCard
                         key={cocktail.id}
                         cocktail={cocktail}

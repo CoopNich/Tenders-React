@@ -2,6 +2,7 @@ import React from 'react';
 import './Nav.css';
 import { withRouter, Link } from 'react-router-dom';
 import useSimpleAuth from "../auth/useSimpleAuth"
+import SearchBar from '../search/SearchBar'
 
 const NavBar = (props) => {
 
@@ -13,23 +14,27 @@ const NavBar = (props) => {
             
         {
         isAuthenticated()
-            ? <><nav>
-                <Link to='/'>
+            ? <>
+            <div id="navDiv">
+            <nav>
+                {/* <Link to='/'>
                     Home
-            </Link>
+            </Link> */}
                 <Link to='/mycocktails'>
                     My Cocktails
             </Link>
                 <Link to='/addcocktail'>
                     Create Cocktail
             </Link>
-                <Link to='/profile'>
+                {/* <Link to='/profile'>
                     My Profile
-            </Link>
+            </Link> */}
                 <Link onClick={() => { logout() }} to='/login'>
                     Log Out
             </Link>
-            </nav></>
+            <SearchBar />
+            </nav>
+            </div></>
             : null
         }
             
