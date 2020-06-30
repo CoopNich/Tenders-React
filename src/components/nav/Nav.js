@@ -11,33 +11,31 @@ const NavBar = (props) => {
 
     return (
         <>
-            
-        {
-        isAuthenticated()
-            ? <>
-            <div id="navDiv">
-            <nav>
-                {/* <Link to='/'>
-                    Home
-            </Link> */}
-                <Link to='/mycocktails'>
-                    My Cocktails
-            </Link>
-                <Link to='/addcocktail'>
-                    Create Cocktail
-            </Link>
-                {/* <Link to='/profile'>
-                    My Profile
-            </Link> */}
-                <Link onClick={() => { logout() }} to='/login'>
-                    Log Out
-            </Link>
-            <SearchBar />
-            </nav>
-            </div></>
-            : null
-        }
-            
+
+            {
+                isAuthenticated()
+                    ? <>
+                        <div id="navDiv">
+                            <nav>
+                                <Link to='/mycocktails'>
+                                    My Cocktails
+                                </Link>
+                                <Link to='/addcocktail'>
+                                    Create Cocktail
+                                </Link>
+                                <SearchBar />
+                            </nav>
+                            <div className="logout-div">
+                                <nav>
+                                <Link onClick={() => { logout() }} to='/login'>
+                                    Log Out
+                                </Link>
+                                </nav>
+                                </div>
+                        </div></>
+                    : null
+            }
+
         </>
     )
 };

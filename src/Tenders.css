@@ -29,6 +29,23 @@
   margin-bottom: 10px;
 }
 
+.button-delete {
+  color: #F8F9FA;
+  background-color:#495057 ;
+  border-radius: 5px;
+  border-style: none !important;
+  padding-top: 3px;
+}
+
+.button-delete:hover {
+  color: #495057;
+  background-color:#F8F9FA ;
+}
+
+.button-delete:focus {
+  outline: none
+}
+
 .detail-image {
   width: 300px;
 }
