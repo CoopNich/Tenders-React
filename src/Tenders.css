@@ -1,12 +1,12 @@
 .content {
   display: flexbox;
-  margin-left: 500px;
+  margin-left: 480px;
   margin-top: 35px;
   padding: 10px;
   position: absolute;
-  height: 80%;
+  height:88%;
   overflow: auto;
-  width: 60%;
+  width: 65%;
   border-radius: 10px;
   background-color: #CED4DA;
 
@@ -17,6 +17,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+.detail-image {
+  width: 300px;
+  border-radius: 10px;
 }
 
 .card-image {
@@ -44,10 +49,6 @@
 
 .button-delete:focus {
   outline: none
-}
-
-.detail-image {
-  width: 300px;
 }
 
 .detail-flex {

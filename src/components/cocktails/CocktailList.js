@@ -24,7 +24,7 @@ const CocktailList = (props) => {
 
     useEffect(() => {
         generateResults();
-    }, [results]);
+    }, []);
 
     return (
         <div className="content">
@@ -34,6 +34,7 @@ const CocktailList = (props) => {
                         key={cocktail.id}
                         cocktail={cocktail}
                         deleteCocktail={deleteCocktail}
+                        generateResults={generateResults}
 
                         {...props}
                     />)}

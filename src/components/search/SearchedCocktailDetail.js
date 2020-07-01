@@ -9,11 +9,16 @@ const SearchedCocktailDetail = (props) => {
     const [cocktail, setCocktail] = useState({})
     const [ingredients, setIngredients] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [display, setDisplay] = useState(false)
+
+    const toggleDisplay = () => {
+        setDisplay(!display);
+    };
 
     const concatIngredients = []
 
     const setAllIngredients = () => {
-            SearchManager.getSingleCocktail(props.cocktailId)
+        SearchManager.getSingleCocktail(props.cocktailId)
             .then(response => {
                 for (let i = 1; i < 16; i++) {
                     const ingredient = response.drinks[0][`strIngredient${i}`]
@@ -27,14 +32,13 @@ const SearchedCocktailDetail = (props) => {
                         concatIngredients.push(newIngredientObj)
                     }
                 }
-            }).then(setIngredients(concatIngredients)).then(setIsLoading(false))
+            }).then(setIngredients(concatIngredients)).then(toggleDisplay())
 
     }
     const getCocktail = () => {
         SearchManager.getSingleCocktail(props.cocktailId)
             .then(response => {
                 setCocktail(response.drinks[0])
-                console.log(response.drinks[0])
             })
     };
 
@@ -66,31 +70,38 @@ const SearchedCocktailDetail = (props) => {
     }
 
     useEffect(() => {
+        setIsLoading(true)
         getCocktail()
-        setAllIngredients()     
-    }, [])
+        setIsLoading(false)
+    }, [ingredients])
 
     return (
         <>  {!isLoading
-            ?<div className="content">
+            ? <div className="content">
                 <div className="detail-flex">
                     <div className="detail-name">
                         <img className="detail-image" src={cocktail.strDrinkThumb} required></img>
                         <h2>{cocktail.strDrink}</h2>
                     </div>
                     <div className="detail-ingredients">
+
                         <div>
+                            <div>
+                                {!display
+                                ?<button onClick={setAllIngredients}>Show Ingredients</button>
+                                :null}
+                            </div>
                             {ingredients.map((ingredient) => (
                                 <SearchedIngredientCard key={ingredient.id} ingredient={ingredient} {...props} />))}
                         </div>
                     </div>
                 </div>
                 <div>
-                    <span>{cocktail.strInstructions}</span>
-                    <button onClick={godHelpUsAll}> Save</button>
+                    <p>{cocktail.strInstructions}</p>                    
                 </div>
+                <div><button onClick={godHelpUsAll}> Save</button></div>
             </div>
-            :null}
+            : null}
         </>
     );
 };
