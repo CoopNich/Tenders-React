@@ -1,15 +1,36 @@
 import React, { useState } from "react"
 import useSimpleAuth from "./useSimpleAuth";
+import UploadImage from "../../modules/helpers/UploadImage"
 
 const Register = props => {
   const [credentials, setCredentials] = useState({ firstName: "", lastName: "", email: "", username: "", password: ""});
   const { register } = useSimpleAuth()
+  const [image, setImage] = useState('')
 
   const handleFieldChange = (evt) => {
     const stateToChange = { ...credentials };
     stateToChange[evt.target.id] = evt.target.value;
     setCredentials(stateToChange);
   };
+
+  const UploadImage = async e => {
+
+
+    const files = e.target.files
+    const data = new FormData()
+    data.append('file', files[0])
+    data.append('upload_preset', 'tenders')
+    const res = await fetch(
+      '	https://api.cloudinary.com/v1_1/tenders/image/upload',
+      {
+        method: 'POST',
+        body: data
+      }
+    )
+    const file = await res.json()
+
+    setImage(file.secure_url)
+  }
 
   const handleRegister = e => {
     e.preventDefault();
@@ -19,11 +40,13 @@ const Register = props => {
       "last_name": credentials.lastName,
       "email": credentials.email,
       "username": credentials.username,
-      "password": credentials.password
+      "password": credentials.password,
+      "image_url": image
+
     }
 
     register(newUser)
-    .then(() => props.history.push("/"))
+    .then(() => props.history.push("/mycocktails"))
   }
 
   return (
@@ -63,6 +86,10 @@ const Register = props => {
           id="password"
           placeholder="Password"
           required="" autoFocus="" />
+      </fieldset>
+      <fieldset>
+        <input type="file" name="file" placeholder="Upload Image" onChange={UploadImage}/>
+        <img className="detail-image" src={image} required></img>
       </fieldset>
       <fieldset>
         <button type="submit">
