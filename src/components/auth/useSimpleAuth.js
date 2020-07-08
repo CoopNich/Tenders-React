@@ -14,6 +14,7 @@ const useSimpleAuth = (props) => {
             .then(parsedResponse => {
                 if ("token" in parsedResponse) {
                     sessionStorage.setItem("auth-token", parsedResponse.token)
+                    sessionStorage.setItem("bartender", parsedResponse.bartender)
                 }
             })
     }
@@ -23,6 +24,7 @@ const useSimpleAuth = (props) => {
             .then(parsedResponse => {
                 if ("valid" in parsedResponse && parsedResponse.valid && "token" in parsedResponse) {
                     sessionStorage.setItem("auth-token", parsedResponse.token)
+                    sessionStorage.setItem("bartender", parsedResponse.bartender )
                     setIsLoggedIn(true)
                 }
             })
@@ -31,6 +33,7 @@ const useSimpleAuth = (props) => {
     const logout = () => {
         setIsLoggedIn(false)
         sessionStorage.removeItem("auth-token")
+        sessionStorage.removeItem("bartender")
     }
 
     return { isAuthenticated, logout, login, register }
