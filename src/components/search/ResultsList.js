@@ -30,7 +30,7 @@ const SearchResults = (props) => {
                ? <div className="content"><div className="card-content">{results.drinks.map((cocktail) => (
               <ResultsCard key={cocktail.idDrink} cocktail={cocktail} {...props} />
             ))}</div></div>
-            : <div>No results found</div>
+            : <div className="content">No results found</div>
                }
     </>
     )

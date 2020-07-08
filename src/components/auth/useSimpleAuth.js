@@ -14,6 +14,7 @@ const useSimpleAuth = (props) => {
             .then(parsedResponse => {
                 if ("token" in parsedResponse) {
                     sessionStorage.setItem("auth-token", parsedResponse.token)
+                    sessionStorage.setItem("bartender", parsedResponse.bartender)
                 }
             })
     }

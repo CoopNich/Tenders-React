@@ -13,12 +13,12 @@ const NavBar = (props) => {
         BartenderManager.getLoggedInUser()
             .then(user => {
                 setBartender(user);
-            });
+            })
     };
-
+    
     useEffect(() => {
         getBartender();
-    }, []);
+    }, [isAuthenticated()]);
 
 
     return (

@@ -5,6 +5,7 @@ import IngredientManager from "../../modules/IngredientsManager"
 const CocktailForm = (props) => {
     const [cocktail, setCocktail] = useState({});
     const [ingredient, setIngredient] = useState({})
+    const [image, setImage] = useState(null)
     const [allIngredients, setAllIngredients] = useState([])
 
     const handleFieldChange = (evt) => {
@@ -16,7 +17,7 @@ const CocktailForm = (props) => {
     const appendIngredient = (evt) => {
         evt.preventDefault()
         setAllIngredients([...allIngredients, ingredient])
-        setIngredient({measurement: "", ingredient: ""})
+        setIngredient({ measurement: "", ingredient: "" })
     }
 
     const handleIngredientChange = (evt) => {
@@ -24,6 +25,25 @@ const CocktailForm = (props) => {
         stateToChange[evt.target.id] = evt.target.value;
         setIngredient(stateToChange);
     };
+
+    const UploadImage = async e => {
+
+
+        const files = e.target.files
+        const data = new FormData()
+        data.append('file', files[0])
+        data.append('upload_preset', 'tenders')
+        const res = await fetch(
+            '	https://api.cloudinary.com/v1_1/tenders/image/upload',
+            {
+                method: 'POST',
+                body: data
+            }
+        )
+        const file = await res.json()
+
+        setImage(file.secure_url)
+    }
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
@@ -35,7 +55,7 @@ const CocktailForm = (props) => {
             instructions: cocktail.instructions,
             is_edited: false,
             is_new: true,
-            image_url: null
+            image_url: image
         };
 
         CocktailManager.addExternalCocktail(newCocktail).then(response =>
@@ -45,7 +65,7 @@ const CocktailForm = (props) => {
                     "measurement": ingredient.measurement,
                     "cocktail_id": response.id
                 }
-                IngredientManager.addExternalIngredient(newIngredientObj)               
+                IngredientManager.addExternalIngredient(newIngredientObj)
             })
         ).then(() => props.history.push("/mycocktails"))
 
@@ -64,6 +84,10 @@ const CocktailForm = (props) => {
                         required=""
                         autoFocus=""
                     />
+                </fieldset>
+                <fieldset>
+                    <input type="file" name="file" placeholder="Upload Image" onChange={UploadImage} />
+                    <img className="detail-image" src={image} required></img>
                 </fieldset>
                 <fieldset>
                     <label htmlFor="glass">Glass Type:</label>

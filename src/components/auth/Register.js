@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import useSimpleAuth from "./useSimpleAuth";
-import UploadImage from "../../modules/helpers/UploadImage"
 
 const Register = props => {
   const [credentials, setCredentials] = useState({ firstName: "", lastName: "", email: "", username: "", password: ""});
