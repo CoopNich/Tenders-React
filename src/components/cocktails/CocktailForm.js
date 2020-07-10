@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CocktailManager from "../../modules/CocktailManager";
 import IngredientManager from "../../modules/IngredientsManager"
+import CloudinaryManager from "../../modules/CloudinaryManager"
 
 const CocktailForm = (props) => {
     const [cocktail, setCocktail] = useState({});
@@ -32,9 +33,9 @@ const CocktailForm = (props) => {
         const files = e.target.files
         const data = new FormData()
         data.append('file', files[0])
-        data.append('upload_preset', 'tenders')
+        data.append('upload_preset', CloudinaryManager.preset)
         const res = await fetch(
-            '	https://api.cloudinary.com/v1_1/tenders/image/upload',
+            CloudinaryManager.uploadFolder,
             {
                 method: 'POST',
                 body: data
