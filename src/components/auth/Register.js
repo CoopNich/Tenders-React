@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import useSimpleAuth from "./useSimpleAuth";
+import CloudinaryManager from "../../modules/CloudinaryManager"
 
 const Register = props => {
   const [credentials, setCredentials] = useState({ firstName: "", lastName: "", email: "", username: "", password: ""});
@@ -18,9 +19,9 @@ const Register = props => {
     const files = e.target.files
     const data = new FormData()
     data.append('file', files[0])
-    data.append('upload_preset', 'tenders')
+    data.append('upload_preset', CloudinaryManager.preset)
     const res = await fetch(
-      '	https://api.cloudinary.com/v1_1/tenders/image/upload',
+      CloudinaryManager.uploadFolder,
       {
         method: 'POST',
         body: data
