@@ -24,7 +24,7 @@ const Login = props => {
   }
 
   return (
-    <form className="content" onSubmit={handleLogin}>
+    <form className="login-content" onSubmit={handleLogin}>
       <h1 className="h3 mb-3 font-weight-normal">Login</h1>
       <fieldset>
         <label htmlFor="username"> Username </label>
@@ -40,11 +40,10 @@ const Login = props => {
           placeholder="Password"
           required="" autoFocus="" value={credentials.password}/>
       </fieldset>
-      <fieldset>
         <button type="submit">
           Login
-                    </button>
-      </fieldset>
+        </button>
+        <button onClick={() => (props.history.push("/register"))}>Register</button>
     </form>
   )
 }

@@ -50,7 +50,7 @@ const Register = props => {
   }
 
   return (
-    <form className="content" onSubmit={handleRegister}>
+    <form className="login-content" onSubmit={handleRegister}>
       <h1 className="h3 mb-3 font-weight-normal">Register with Tenders!</h1>
       <fieldset>
         <label htmlFor="firstName"> First Name </label>
