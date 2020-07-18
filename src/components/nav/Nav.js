@@ -29,7 +29,10 @@ const NavBar = (props) => {
                     ? <>
                         <div id="navDiv">
                             <nav>
-                            <img className="nav-image" src={bartender.image_url}></img>
+                            {bartender.image_url
+                            ?<img className="nav-image" src={bartender.image_url}></img>
+                            :<img className="nav-image" src={require("../media/profile.png")}></img>
+                            }
                                 <Link to='/mycocktails'>
                                     My Cocktails
                                 </Link>

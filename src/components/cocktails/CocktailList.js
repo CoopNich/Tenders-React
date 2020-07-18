@@ -27,7 +27,9 @@ const CocktailList = (props) => {
     }, []);
 
     return (
-        <div className="content">
+        isLoading
+        ? <div className="content">Here come them drinks....</div>
+        : <div className="content">
             <div className="card-content">
                 {results.slice(0).reverse().map(cocktail =>
                     <CocktailCard
