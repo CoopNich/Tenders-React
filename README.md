@@ -1,68 +1,74 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Tenders
+  Tenders is a cocktail recipe app that allows users to search the web for new and exciting cocktails, while also allowing them to create and edit their own cocktails. 
 
-In the project directory, you can run:
+## Table of Contents
+  * [Features List](#features-list)
+  * [Technologies Used](#technologies-used)
+  * [Installing and Launching Tenders](#instructions-for-installing-tenders)
+  * [Planning Documentation](#planning-documentation)
+    * [Entity Relationship Diagram](#entity-relationship-diagram)
 
-### `npm start`
+## Features List
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Search Cocktails
+  Users can use the search bar in the navigation component to search for new cocktails by name or liquor type.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+![Add a Task](/src/media/search_cocktail.PNG)
 
-### `npm test`
+### Saved Cocktails
+  Whether the user has created their own cocktails, or saved them from the web, they will have a collection of cocktails in their "My Cocktails" section
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Add a Step](/src/media/mycocktails.PNG)
+### Viewing, Editing, or Deleting Cocktails
+  From their list of cocktails, a user can delete cocktails. They can also click on any cocktail to view the recipe and instructions. If they decide to edit the instructions, name, or ingredients, they may do so by simply clicking on that section of the detail. 
 
-### `npm run build`
+![Connect a Step](/src/media/cocktaildetails.PNG)
+![Connect a Step](/src/media/editcocktail.PNG)
+## Technologies Used
+  ### Front End
+    React.js
+    JavaScript
+    HTML
+    CSS
+    Cloudinary
+  
+  ### Back End
+    Python
+    Django 
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Instructions for Installing Tenders
+  Before installing Tenders, visit the [Tenders API](https://github.com/coopnich/tenders-django) repository, and follow the README to install and run Tender's Django REST API
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+  ----------------
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  Clone this repo on your personal machine using the following command in your terminal
+  ```sh
+    git clone git@github.com:coopnich/tenders-react.git
+  ```
 
-### `npm run eject`
+  Install the NPM dependencies for this project using the following commands
+  ```sh
+    cd tenders
+    npm install
+    npm install react-router-dom
+  ```
+ 
+  After installing dependencies, type
+  ```sh
+    npm start
+  ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  Now that the server is up and running, you can open an internet browser and access the application
+  ```sh
+    http://localhost:3000/
+  ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Planning Documentation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Entity Relationship Diagram
+![Tenders ERD](/ERD.PNG)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+  This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
